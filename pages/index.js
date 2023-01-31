@@ -5,6 +5,28 @@ import buildspaceLogo from '../assets/buildspace-logo.png';
 
 const Home = () => {
   const [userInput, setUserInput] = useState('');
+  const [apiOutput, setApiOutput] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const callGenerateEndpoint = async () => {
+    setIsGenerating(true);
+
+    console.log("Calling OpenAI...");
+    const response = await fetch('api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userInput })
+    });
+
+    const data = await response.json();
+    const { output } = data;
+    console.log("OpenAI replied...", output.text);
+
+    setApiOutput(`${output.text}`);
+    setIsGenerating(false);
+  };
 
   const onUserChangedText = (event) => {
     setUserInput(event.target.value);
@@ -32,7 +54,7 @@ const Home = () => {
             onChange={onUserChangedText}
           />
           <div className="prompt-buttons">
-            <a className="generate-button" onClick={null}>
+            <a className="generate-button" onClick={callGenerateEndpoint}>
               <div className="generate">
                 <p>Generate</p>
               </div>
