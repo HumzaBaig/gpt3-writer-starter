@@ -31,6 +31,13 @@ const Home = () => {
             value={userInput}
             onChange={onUserChangedText}
           />
+          <div className="prompt-buttons">
+            <a className="generate-button" onClick={null}>
+              <div className="generate">
+                <p>Generate</p>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <div className="badge-container grow">
