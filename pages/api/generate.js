@@ -12,7 +12,7 @@ const generateAction = async (req, res) => {
             temperature: 0.8,
             max_tokens: 256
         }),
-        timeout: 5000
+        timeout: 15000
     })
     .then(response => response.json())
     .then(data => {
