@@ -5,7 +5,7 @@
       "src": "src/pages/api/**/*.js",
       "use": "@vercel/next",
       "config": {
-        "API_CALL_TIMEOUT": "300000"
+        "timeout": "300000"
       }
     }
   ]
