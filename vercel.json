@@ -2,21 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "next.config.js",
+      "src": "src/pages/api/**/*.js",
       "use": "@vercel/next",
       "config": {
-        "env": {
-          "API_CALL_TIMEOUT": "30000"
-        }
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "headers": {
-        "timeout": "${API_CALL_TIMEOUT}"
+        "API_CALL_TIMEOUT": "300000"
       }
     }
   ]
